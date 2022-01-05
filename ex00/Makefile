@@ -3,7 +3,7 @@ OBJS = ${SRCS:.cpp=.o}
 NAME = megaphon
 
 CC = c++
-CPPFLAGS = -Wall -Wextra -Werror
+CPPFLAGS = -Wall -Wextra -Werror -std=c++98 -pedantic
 
 RM = rm -f
 
