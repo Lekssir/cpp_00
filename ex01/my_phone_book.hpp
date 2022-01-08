@@ -6,7 +6,7 @@
 /*   By: dweeper <dweeper@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/28 14:43:47 by dweeper           #+#    #+#             */
-/*   Updated: 2022/01/08 00:44:10 by dweeper          ###   ########.fr       */
+/*   Updated: 2022/01/08 17:16:04 by dweeper          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,11 @@
 
 # include <iostream>
 # include <string>
+# include <iomanip>
 
 class	Contact
 {
+public:
 	std::string	first_name;
 	std::string	last_name;
 	std::string	nickname;
@@ -27,22 +29,17 @@ class	Contact
 
 class	Phone_book {
 public:
-	Phone_book(/* args */);
-	~Phone_book();
+	Phone_book();
 	void	add();
 	void	search();
 	void	exit();
 private:
+	void	display_contc_info(int	index);
+	void	display_filled_contacts();
+
 	Contact	cont_array[8];
 	int		top_index;
+	int		used_index;
 };
-
-Phone_book::Phone_book(/* args */)
-{
-}
-
-Phone_book::~Phone_book()
-{
-}
 
 #endif
