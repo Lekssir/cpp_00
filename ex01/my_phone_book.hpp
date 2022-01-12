@@ -6,7 +6,7 @@
 /*   By: dweeper <dweeper@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/28 14:43:47 by dweeper           #+#    #+#             */
-/*   Updated: 2022/01/08 17:16:04 by dweeper          ###   ########.fr       */
+/*   Updated: 2022/01/11 23:04:44 by dweeper          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,6 @@ public:
 	Phone_book();
 	void	add();
 	void	search();
-	void	exit();
 private:
 	void	display_contc_info(int	index);
 	void	display_filled_contacts();
@@ -41,5 +40,9 @@ private:
 	int		top_index;
 	int		used_index;
 };
+
+namespace My_phone_book {
+	std::string	truncate(std::string const& str, unsigned int width, char fill_char);
+}
 
 #endif

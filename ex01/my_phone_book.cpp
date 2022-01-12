@@ -6,7 +6,7 @@
 /*   By: dweeper <dweeper@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/08 14:43:47 by dweeper           #+#    #+#             */
-/*   Updated: 2022/01/08 17:58:26 by dweeper          ###   ########.fr       */
+/*   Updated: 2022/01/11 23:08:46 by dweeper          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,11 +21,11 @@ Phone_book::Phone_book()
 
 void	Phone_book::display_contc_info(int index)
 {
-	std::cout << cont_array[index].first_name << std::endl;
-	std::cout << cont_array[index].last_name << std::endl;
-	std::cout << cont_array[index].nickname << std::endl;
-	std::cout << cont_array[index].phone_number << std::endl;
-	std::cout << cont_array[index].darkest_secret << std::endl;
+	std::cout << "First name: " << cont_array[index].first_name << std::endl;
+	std::cout << "Last name: " << cont_array[index].last_name << std::endl;
+	std::cout << "Nickname: " << cont_array[index].nickname << std::endl;
+	std::cout << "Phone_number: " << cont_array[index].phone_number << std::endl;
+	std::cout << "Darkest_secret: " << cont_array[index].darkest_secret << std::endl;
 	return ;
 }
 
@@ -35,9 +35,13 @@ void	Phone_book::display_filled_contacts()
 		<< " | " << std::setw(10) << "last name" << " | "
 		<< std::setw(10) <<  "nickname" << std::endl;
 	for (int i = 0; i < used_index; i++) {
-		std::cout << std::setw(10) << i + 1 << " | " << std::setw(10) << cont_array[i].first_name
-			<< " | " << std::setw(10)	<< cont_array[i].last_name << " | "
-			<< std::setw(10) <<  cont_array[i].nickname << std::endl;
+		std::cout << std::setw(10) << i + 1 << " | " << std::setw(10)
+			<< My_phone_book::truncate(cont_array[i].first_name, 10, '.')
+			<< " | " << std::setw(10)
+			<< My_phone_book::truncate(cont_array[i].last_name, 10, '.')
+			<< " | " << std::setw(10) 
+			<< My_phone_book::truncate(cont_array[i].nickname, 10, '.')
+			<< std::endl;
 	}
 	return ;
 }
@@ -56,12 +60,12 @@ void	Phone_book::add()
 	std::cout << "Please, enter the new contact's darkest secret." << std::endl;
 	std::cin >> cont_array[top_index].darkest_secret;
 	std::cout << "New contact successfully added!" << std::endl;
-	top_index++;
-	used_index++;
-	if (top_index == 8)
+	if (used_index < 8)
+		used_index++;
+	if (top_index < 7)
+		top_index++;
+	else
 		top_index = 0;
-	if (used_index > 8)
-		used_index = 8;
 	return ;
 }
 
@@ -69,8 +73,7 @@ void	Phone_book::search()
 {
 	int	ent_number;
 
-	if (used_index == 0)
-	{
+	if (used_index == 0) {
 		std::cout << "Contact list is empty! Consider adding some contacts first." << std::endl;
 		return ;
 	}
@@ -82,4 +85,12 @@ void	Phone_book::search()
 	else
 		display_contc_info(ent_number - 1);
 	return ;
+}
+
+std::string	My_phone_book::truncate(std::string const& str, unsigned int width, char fill_char)
+{
+	if (str.length() > width)
+		return (str.substr(0, width - 1) + fill_char);
+	else
+		return (str);
 }
