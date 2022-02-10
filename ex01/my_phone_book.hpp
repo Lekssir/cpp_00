@@ -6,7 +6,7 @@
 /*   By: dweeper <dweeper@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/28 14:43:47 by dweeper           #+#    #+#             */
-/*   Updated: 2022/01/11 23:04:44 by dweeper          ###   ########.fr       */
+/*   Updated: 2022/02/10 16:12:52 by dweeper          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include <iostream>
 # include <string>
 # include <iomanip>
+# include <ctype.h>
 
 class	Contact
 {
@@ -43,6 +44,7 @@ private:
 
 namespace My_phone_book {
 	std::string	truncate(std::string const& str, unsigned int width, char fill_char);
+	int			ns_len(std::string const& str);
 }
 
 #endif

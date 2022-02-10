@@ -1,6 +1,6 @@
 SRCS = megaphone.cpp
 OBJS = ${SRCS:.cpp=.o}
-NAME = megaphon
+NAME = megaphone
 
 CC = c++
 CPPFLAGS = -Wall -Wextra -Werror -std=c++98 -pedantic

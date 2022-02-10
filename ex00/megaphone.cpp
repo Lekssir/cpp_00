@@ -6,7 +6,7 @@
 /*   By: dweeper <dweeper@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/28 14:09:30 by dweeper           #+#    #+#             */
-/*   Updated: 2021/12/28 14:29:28 by dweeper          ###   ########.fr       */
+/*   Updated: 2022/02/10 14:27:53 by dweeper          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,8 @@ int	main(int argc, char **argv)
 	{
 		while(**argv)
 		{
-			if (**argv >= 97 && **argv <= 122)
-				std::cout << (char)(**argv - 32);
+			if (std::islower(**argv))
+				std::cout << (char)std::toupper(**argv);
 			else
 				std::cout << (**argv);
 			(*argv)++;
